@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SudSound</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>SudSound</h1>
+    <input type="text" id="searchInput" placeholder="Cerca brani..." />
+  </header>
+
+  <main>
+    <section id="playlist">
+      <!-- I brani verranno generati qui -->
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 SudSound</p>
+  </footer>
+
+  <script>
+    const playlist = [
+      {
+        title: "Biagio Antonacci - IRIS",
+        file: "Biagio Antonacci - IRIS - [kEWB9GmDZzs].mp3",
+        cover: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS0kKu0m3bwKUZpsyrF18Eg_iyUq8MDGnbZSMJ0MKoaZVhSLTUrKFKAgZBZZT_AxXt-eJF-EJHgkpVHeMprbdZn2KRqorRqLqVzDkQxGy_d"
+      },
+      {
+        title: "Palermo Nights",
+        file: "palermonights.mp3",
+        cover: "cover2.jpg"
+      },
+      {
+        title: "Etna Beats",
+        file: "etnabeats.mp3",
+        cover: "cover3.jpg"
+      }
+    ];
+
+    const searchInput = document.getElementById("searchInput");
+    const playlistSection = document.getElementById("playlist");
+
+    function renderTracks(tracks) {
+      playlistSection.innerHTML = "";
+      if (tracks.length === 0) {
+        playlistSection.innerHTML = "<p>Nessun brano trovato.</p>";
+        return;
+      }
+
+      tracks.forEach(track => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="${track.cover}" alt="Copertina ${track.title}" class="cover" />
+          <h3>${track.title}</h3>
+          <audio controls>
+            <source src="${track.file}" type="audio/mpeg" />
+            Il tuo browser non supporta l'audio.
+          </audio>
+        `;
+        playlistSection.appendChild(card);
+      });
+    }
+
+    renderTracks(playlist);
+
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.toLowerCase();
+      const filtered = playlist.filter(track =>
+        track.title.toLowerCase().includes(query)
+      );
+      renderTracks(filtered);
+    });
+  </script>
+</body>
+</html>
