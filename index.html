@@ -4,13 +4,84 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SudSound</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fdf6e3;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background: #ffcc00;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    header input {
+      margin-top: 10px;
+      padding: 10px;
+      width: 60%;
+      border: none;
+      border-radius: 5px;
+    }
+    #playlist {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 15px;
+      width: 250px;
+      text-align: center;
+    }
+    .cover {
+      width: 100%;
+      border-radius: 10px;
+    }
+    audio {
+      width: 100%;
+      margin-top: 10px;
+    }
+    .author-box {
+      background: #ffe;
+      border-left: 5px solid #ffcc00;
+      padding: 15px;
+      margin: 20px auto;
+      max-width: 600px;
+      border-radius: 10px;
+    }
+    .author-box img {
+      width: 80px;
+      border-radius: 50%;
+      float: left;
+      margin-right: 15px;
+    }
+    footer {
+      background: #ffcc00;
+      text-align: center;
+      padding: 10px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
   <header>
     <h1>SudSound</h1>
-    <input type="text" id="searchInput" placeholder="Cerca brani..." />
+    <input type="text" id="searchInput" placeholder="Cerca brani o artisti..." />
   </header>
+
+ 
 
   <main>
     <section id="playlist">
